@@ -1,0 +1,104 @@
+1. Adding a day 
+public String next_day(@WebParam(name = "date") String date) { 
+ //TODO write your implementation code here: 
+ return LocalDate.parse(date).plusDays(1).toString(); 
+ } 
+
+2. Factorial 
+public Integer factorial(@WebParam(name = "num") int num) { 
+ //TODO write your implementation code here: 
+ int res, i, fact=1; 
+ if (num>1){ 
+ fact = 1; 
+ for (i=1; i<=num; i++){ 
+ fact = fact*i; 
+ } 
+ } 
+ return fact; 
+ } 
+
+3. Greetings 
+public String greet(@WebParam(name = "dateNtime") String dateNtime) { 
+ //TODO write your implementation code here: 
+ LocalTime cur_time = LocalTime.now(); 
+ int hour = cur_time.getHour(); 
+ String res = ""; 
+ if (hour<12 & hour>0){ 
+ res = "Good Morning!"; 
+ } 
+ else if (hour>17 & hour<24){ 
+ res = "Good Evening!"; 
+ } 
+ else if (hour >= 12 & hour < 17){ 
+ res = "Good Afternoon!"; 
+ } 
+ return res; 
+ } 
+
+4. Palindrome 
+public String isPal(@WebParam(name = "num") int num) { 
+ //TODO write your implementation code here: 
+ int r, sum=0, temp; 
+ String res=""; 
+ temp = num; 
+ while(num>0){ 
+ r = num % 10; 
+ sum = (sum*10)+r ; 
+ num = num/10 ; 
+ } 
+ if (temp == sum){ 
+ res = temp + " is a Palindrome number"; 
+ } 
+ else{ 
+ res = temp + " is NOT a Palindrome number"; 
+ } 
+ return res; 
+ } 
+
+5. Km to in and vice versa 
+@WebMethod(operationName = "km_to_in") 
+ public Double km_to_in(@WebParam(name = "km") double km) { 
+ //TODO write your implementation code here: 
+ Double in = km * 39370.1 ; 
+ return in; 
+ } 
+ @WebMethod(operationName = "In_to_km") 
+ public Double In_to_km(@WebParam(name = "in") double in) { 
+ Double km = in/39370.1 ; 
+ return km; 
+ } 
+
+6. Temp convert 
+@WebMethod(operationName = "C_to_F") 
+ public Double C_to_F(@WebParam(name = "c") double c) { 
+ Double f = ((c * 9)/5) + 32 ; 
+ return f; 
+ } 
+ @WebMethod(operationName = "F_to_C") 
+ public Double F_to_C(@WebParam(name = "f") double f) { 
+ Double c = ((f - 32)*5)/9 ; 
+ return c; 
+ }
+ 
+7. Reverse number 
+public Integer reverse(@WebParam(name = "num") int num) { 
+ //TODO write your implementation code here: 
+ int rev=0, rem; 
+ while(num>0){ 
+ rem = num%10; 
+ rev = (rev*10) + rem; 
+ num = num/10 ; 
+ } 
+ return rev; 
+ } 
+
+8. Add numbers 
+@WebMethod(operationName = "Sum") 
+ public Integer Sum(@WebParam(name = "num") int num) { 
+ //TODO write your implementation code here: 
+ int i, tot=0; 
+ for(i=1; i<=num; i++){ 
+ tot = tot + i; 
+ } 
+ return tot; 
+ }
